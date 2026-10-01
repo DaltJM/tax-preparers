@@ -1,0 +1,1238 @@
+/* TaxPreparers concept. Tokens: primitives, then semantic roles, then components. */
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/assets/fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/ibm-plex-sans-latin-700-italic.woff2") format("woff2");
+}
+
+:root {
+  /* Primitives. Navy is sampled from the TaxPreparers logo; amber is a concept accent. */
+  --navy-900: #1b2152;
+  --navy-700: #2f3a82;
+  --navy-300: #aab1dc;
+  --navy-100: #e9ebf5;
+  --ink-900: #14182e;
+  --ink-600: #474d6b;
+  --paper-50: #fafaf7;
+  --white: #ffffff;
+  --amber-400: #f0b23a;
+  --amber-300: #f6c765;
+  --amber-500: #e39b0c;
+  --line-200: #d5d8e6;
+
+  /* Semantic */
+  --color-bg: var(--paper-50);
+  --color-surface: var(--white);
+  --color-band: var(--navy-100);
+  --color-text: var(--ink-900);
+  --color-text-muted: var(--ink-600);
+  --color-brand: var(--navy-700);
+  --color-brand-deep: var(--navy-900);
+  --color-on-brand: var(--white);
+  --color-on-brand-muted: var(--navy-300);
+  --color-action: var(--amber-400);
+  --color-action-hover: var(--amber-300);
+  --color-on-action: var(--navy-900);
+  --color-rating: var(--amber-500);
+  --color-line: var(--line-200);
+  --color-line-on-brand: rgb(255 255 255 / 0.22);
+  --color-focus: var(--navy-700);
+
+  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 6.5rem;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --shell: 72rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --header-height: 4.25rem;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: calc(var(--header-height) + var(--space-4));
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-variant-numeric: tabular-nums;
+  caret-color: var(--color-brand);
+}
+
+::selection {
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
+.on-brand ::selection {
+  background: var(--color-action);
+  color: var(--color-on-action);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h1,
+h2 {
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 1.2rem + 2.4vw, 2.75rem);
+}
+
+h3 {
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+p {
+  margin: 0;
+  max-width: 68ch;
+}
+
+a {
+  color: var(--color-brand);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.on-brand :focus-visible {
+  outline-color: var(--color-action);
+}
+
+.shell {
+  width: min(100% - 2 * var(--gutter), var(--shell));
+  margin-inline: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -6rem;
+  z-index: 30;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-brand-deep);
+  color: var(--color-on-brand);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+}
+
+.skip-link:focus {
+  top: var(--space-3);
+  outline-color: var(--color-action);
+}
+
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* Buttons */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 3rem;
+  padding: var(--space-3) var(--space-5);
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 180ms var(--ease-out), border-color 180ms var(--ease-out), color 180ms var(--ease-out);
+}
+
+.button-action {
+  background: var(--color-action);
+  color: var(--color-on-action);
+}
+
+.button-action:hover {
+  background: var(--color-action-hover);
+}
+
+.button-ghost {
+  border-color: var(--color-on-brand-muted);
+  color: var(--color-on-brand);
+}
+
+.button-ghost:hover {
+  border-color: var(--color-on-brand);
+}
+
+.button-outline {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+  background: transparent;
+}
+
+.button-outline:hover {
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
+.button-large {
+  min-height: 3.5rem;
+  padding-inline: var(--space-6);
+  font-size: 1.1875rem;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  font-weight: 600;
+}
+
+/* Header */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--header-height);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-block: var(--space-1);
+}
+
+.brand img {
+  width: clamp(8.5rem, 34vw, 12rem);
+}
+
+.header-call {
+  min-height: 2.75rem;
+  padding: var(--space-2) var(--space-4);
+  white-space: nowrap;
+}
+
+.header-call .call-label {
+  display: none;
+}
+
+.site-nav ul {
+  display: flex;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: var(--space-3);
+  color: var(--color-text);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+}
+
+.site-nav a:hover {
+  color: var(--color-brand);
+}
+
+.site-nav a[aria-current="page"] {
+  color: var(--color-brand);
+  border-bottom-color: var(--color-brand);
+}
+
+.nav-row {
+  border-top: 1px solid var(--color-line);
+}
+
+.nav-row .site-nav ul {
+  margin-inline: calc(-1 * var(--space-3));
+}
+
+.header-inner .site-nav {
+  display: none;
+}
+
+/* Hero */
+
+.hero {
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  padding-block: var(--space-7) var(--space-8);
+}
+
+.hero-grid {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 1.4rem + 9vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
+.hero h1 span {
+  display: block;
+}
+
+.swoosh {
+  width: min(100%, 26rem);
+  height: auto;
+  margin-top: var(--space-3);
+  color: var(--color-action);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 5;
+  stroke-linecap: round;
+}
+
+.swoosh path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+  animation: draw 1100ms var(--ease-out) 150ms backwards;
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+.hero-lead {
+  margin-top: var(--space-5);
+  font-size: clamp(1.125rem, 1rem + 0.6vw, 1.3125rem);
+  max-width: 34rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.ledger {
+  align-self: end;
+}
+
+.ledger h2 {
+  font-size: 1.375rem;
+  line-height: 1.3;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--color-on-brand-muted);
+}
+
+.ledger ul {
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-line-on-brand);
+}
+
+.ledger li {
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-line-on-brand);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.ledger-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 3rem;
+  margin-top: var(--space-3);
+  color: var(--color-on-brand);
+  font-weight: 600;
+}
+
+.ledger-link .icon {
+  color: var(--color-action);
+  transition: transform 220ms var(--ease-out);
+}
+
+.ledger-link:hover .icon {
+  transform: translateX(0.3rem);
+}
+
+/* Proof strip */
+
+.proof {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.proof-list {
+  display: grid;
+  margin-block: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.proof-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding-block: var(--space-5);
+  border-top: 1px solid var(--color-line);
+}
+
+.proof-list li:first-child {
+  border-top: 0;
+}
+
+.proof-media {
+  width: 4.5rem;
+  height: 4.5rem;
+  flex: none;
+}
+
+/* Shows the round symbol from the badge image; the agent number beside it is set as text. */
+img.proof-media {
+  object-fit: cover;
+  object-position: 15% 50%;
+  mix-blend-mode: multiply;
+}
+
+.proof-list p {
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.proof-list strong {
+  display: block;
+  font-size: 1.125rem;
+}
+
+.rating {
+  display: grid;
+  place-items: center;
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.stars {
+  display: inline-flex;
+  gap: 0.1em;
+  color: var(--color-rating);
+}
+
+.stars svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.proof-mark {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-band);
+  color: var(--color-brand);
+}
+
+.proof-mark .icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+/* Sections */
+
+.section {
+  padding-block: var(--space-8);
+}
+
+.section-band {
+  background: var(--color-band);
+}
+
+.section-head {
+  display: grid;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.section-head p {
+  color: var(--color-text-muted);
+}
+
+.split {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.rows {
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--color-text);
+}
+
+.rows li {
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.rows h3 + p,
+.rows strong + p {
+  margin-top: var(--space-1);
+  color: var(--color-text-muted);
+}
+
+.rows strong {
+  font-size: 1.1875rem;
+  font-weight: 600;
+}
+
+.audience > p {
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.audience .text-link {
+  margin-top: var(--space-4);
+}
+
+/* Agent placeholder */
+
+.agent {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.agent img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.placeholder-note {
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border: 2px dashed var(--color-text-muted);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+}
+
+/* Reviews */
+
+.reviews-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.reviews-head p {
+  margin-top: var(--space-3);
+  color: var(--color-text-muted);
+}
+
+.review-controls {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.review-controls button {
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid var(--color-brand);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-brand);
+  cursor: pointer;
+  transition: background-color 180ms var(--ease-out), color 180ms var(--ease-out);
+}
+
+.review-controls button:hover:not(:disabled) {
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
+.review-controls button:disabled {
+  border-color: var(--color-text-muted);
+  color: var(--color-text-muted);
+  opacity: 0.55;
+  cursor: default;
+}
+
+.review-viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--color-brand) transparent;
+  padding-bottom: var(--space-3);
+}
+
+/* script.js adds dots under the carousel, so the scrollbar is hidden once it has run. */
+.reviews-enhanced .review-viewport {
+  scrollbar-width: none;
+  padding-bottom: 0;
+}
+
+.reviews-enhanced .review-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.review-dots {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin-top: var(--space-4);
+}
+
+.review-dots[hidden] {
+  display: none;
+}
+
+.review-dots button {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.review-dots button::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--color-text-muted);
+  transition: background-color 220ms var(--ease-out);
+}
+
+.review-dots button.is-active::before {
+  width: 1.25rem;
+  background: var(--color-brand);
+}
+
+.review-track {
+  display: grid;
+  align-items: start;
+  grid-auto-flow: column;
+  grid-auto-columns: min(86%, 24rem);
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.review-card {
+  /* Keeps the visually hidden rating text inside the scrolling list. */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  height: 100%;
+  padding: var(--space-5);
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  scroll-snap-align: start;
+}
+
+.review-card blockquote {
+  margin: 0;
+  flex: 1;
+}
+
+.review-card blockquote p {
+  font-size: 1rem;
+  line-height: 1.6;
+  min-height: 9.6em;
+}
+
+/* Once script.js runs, each card shows six lines and longer reviews get a "See more" button. */
+.reviews-enhanced .review-card blockquote p:not(.is-expanded) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  line-clamp: 6;
+  overflow: hidden;
+}
+
+.review-card footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: var(--space-3);
+}
+
+.review-toggle {
+  min-height: 2rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-brand);
+  font: inherit;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.review-toggle[hidden] {
+  display: none;
+}
+
+.review-card footer strong,
+.review-card footer span {
+  display: block;
+}
+
+.review-card footer span {
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.reviews-note {
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+/* Offices */
+
+.offices {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.office {
+  padding-top: var(--space-5);
+  border-top: 2px solid var(--color-text);
+}
+
+.office address {
+  margin-top: var(--space-3);
+  font-style: normal;
+}
+
+.office ul {
+  display: grid;
+  gap: var(--space-1);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.office li a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  font-weight: 600;
+}
+
+/* Closing band */
+
+.closing {
+  background: var(--color-brand-deep);
+  color: var(--color-on-brand);
+  padding-block: var(--space-8);
+}
+
+.closing blockquote {
+  margin: 0;
+}
+
+.closing blockquote p {
+  max-width: 22ch;
+  font-size: clamp(1.75rem, 1rem + 3.6vw, 3.25rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.closing .hero-actions {
+  margin-top: var(--space-6);
+}
+
+/* Inner pages */
+
+.page-head {
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  padding-block: var(--space-7);
+}
+
+.page-head h1 {
+  font-size: clamp(2.5rem, 1.6rem + 5vw, 4.5rem);
+  letter-spacing: -0.03em;
+}
+
+.page-head p {
+  margin-top: var(--space-4);
+  font-size: 1.1875rem;
+}
+
+.prose {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.prose h2 {
+  margin-bottom: var(--space-2);
+}
+
+.check-list {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-5) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.check-list li {
+  display: flex;
+  gap: var(--space-3);
+  font-weight: 600;
+}
+
+.check-list .icon {
+  margin-top: 0.2em;
+  color: var(--color-brand);
+}
+
+.steps {
+  display: grid;
+  gap: var(--space-5);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.steps li {
+  counter-increment: step;
+  padding-top: var(--space-4);
+  border-top: 2px solid var(--color-text);
+}
+
+.steps h3::before {
+  content: counter(step) ". ";
+  color: var(--color-brand);
+}
+
+.steps p {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+}
+
+.contact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+/* Footer */
+
+.site-footer {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-line);
+  padding-block: var(--space-6);
+  font-size: 0.9375rem;
+  color: var(--color-text-muted);
+}
+
+.footer-inner {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.footer-inner ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-inner a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+.concept-flag {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Wider screens */
+
+@media (min-width: 26rem) {
+  .header-call .call-label {
+    display: inline;
+  }
+}
+
+@media (min-width: 44rem) {
+  .proof-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .proof-list li {
+    border-top: 0;
+    align-items: flex-start;
+  }
+
+  .split,
+  .offices {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Three lines, the longer of the two addresses, so both offices are the same height. */
+  .office address {
+    min-height: calc(3 * 1.6em);
+  }
+
+  .agent {
+    grid-template-columns: 5fr 7fr;
+  }
+
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .review-track {
+    grid-auto-columns: min(46%, 24rem);
+  }
+}
+
+@media (min-width: 56rem) {
+  .nav-row {
+    display: none;
+  }
+
+  .header-inner .site-nav {
+    display: block;
+    margin-left: auto;
+  }
+
+  .hero {
+    padding-block: var(--space-8) var(--space-9);
+  }
+
+  .hero-grid {
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-8);
+  }
+
+  .section {
+    padding-block: var(--space-9);
+  }
+
+  .section-head {
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-7);
+    align-items: end;
+  }
+
+  /* Sits the paragraph on the heading's last baseline. */
+  .section-head p {
+    padding-bottom: 0.3rem;
+  }
+
+  .review-track {
+    grid-auto-columns: calc((100% - 2 * var(--space-4)) / 3);
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+}
+
+/* Reduced motion: no drawing animation, and the reviews become a static list. */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .review-viewport {
+    overflow: visible;
+  }
+
+  .review-track {
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  }
+
+  .review-controls,
+  .review-dots {
+    display: none;
+  }
+}
+
+@media print {
+  .site-header,
+  .review-controls,
+  .skip-link {
+    position: static;
+  }
+}
+
+/* Small spacing helpers used by the inner pages */
+
+.gap-above {
+  margin-top: var(--space-4);
+}
+
+.gap-above-lg {
+  margin-top: var(--space-6);
+}
+
+.gap-below-lg {
+  margin-bottom: var(--space-6);
+}
+
+/* Explicit ratio and start alignment: as a grid item the image otherwise has no reserved height before it loads. */
+.badge {
+  width: 16rem;
+  aspect-ratio: 520 / 266;
+  justify-self: start;
+  align-self: start;
+  margin-top: var(--space-4);
+  mix-blend-mode: multiply;
+}
+
+.proof-list a {
+  display: inline-block;
+  padding-block: var(--space-1);
+}
+
+/* Inline links inside small print keep a 24px target. */
+.reviews-note a {
+  display: inline-block;
+  padding-block: var(--space-1);
+}
+
+/* Long labels such as the email address wrap instead of widening the page. */
+.button {
+  max-width: 100%;
+}
+
+.button span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.contact-actions .button-large {
+  padding-inline: var(--space-4);
+}
+
+/* The email address wraps under increased text spacing and at 320px. */
+.office li a span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Common questions */
+
+.faq {
+  max-width: 48rem;
+  margin-top: var(--space-5);
+  border-top: 2px solid var(--color-text);
+}
+
+.faq details {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: 3.5rem;
+  padding-block: var(--space-3);
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary:hover h3 {
+  color: var(--color-brand);
+}
+
+.faq summary .icon {
+  color: var(--color-brand);
+  transition: transform 220ms var(--ease-out);
+}
+
+.faq details[open] summary .icon {
+  transform: rotate(180deg);
+}
+
+.faq details p {
+  padding-bottom: var(--space-4);
+  color: var(--color-text-muted);
+}
+
+/* The business's advertised starting price, in its own words: a plain second line under the headline. */
+
+.hero-price {
+  margin-top: var(--space-5);
+  color: var(--color-on-brand);
+  font-size: clamp(1.5rem, 1.05rem + 1.9vw, 2.25rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.hero-price strong {
+  font-weight: inherit;
+}
+
+.page-head .hero-price {
+  margin-top: var(--space-4);
+  font-size: 1.5rem;
+}
+
+/* Review footer: name above the year on the left, "See more" on the right. */
+.review-card footer strong,
+.review-card footer > span {
+  grid-column: 1;
+}
+
+.review-card footer .review-toggle {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: end;
+}
