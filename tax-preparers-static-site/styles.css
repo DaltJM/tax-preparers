@@ -567,14 +567,20 @@ img.proof-media {
   color: var(--color-text-muted);
 }
 
-/* Services: one panel per audience. Individuals on white, business on the brand navy. */
+/* Panels: white cards with an icon head. Used for the services (one per audience, business on brand navy) and the offices. */
+
+.split {
+  display: grid;
+  gap: var(--space-7);
+}
+
 
 .audiences {
   display: grid;
   gap: var(--space-5);
 }
 
-.audience-panel {
+.panel {
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
@@ -584,7 +590,7 @@ img.proof-media {
   border-radius: var(--radius-md);
 }
 
-.audience-head {
+.panel-head {
   display: flex;
   align-items: center;
   gap: var(--space-4);
@@ -592,7 +598,7 @@ img.proof-media {
   border-bottom: 1px solid var(--color-line);
 }
 
-.audience-head h3 {
+.panel-head h3 {
   font-size: clamp(1.5rem, 1.2rem + 1vw, 1.875rem);
   font-style: italic;
   font-weight: 700;
@@ -600,7 +606,7 @@ img.proof-media {
   line-height: 1.15;
 }
 
-.audience-icon {
+.panel-icon {
   display: grid;
   place-items: center;
   flex: none;
@@ -611,7 +617,7 @@ img.proof-media {
   color: var(--color-brand);
 }
 
-.audience-icon .icon {
+.panel-icon .icon {
   width: 1.75rem;
   height: 1.75rem;
 }
@@ -649,7 +655,7 @@ img.proof-media {
   color: var(--color-text-muted);
 }
 
-.audience-panel .button {
+.panel .button {
   align-self: flex-start;
   margin-top: auto;
 }
@@ -672,26 +678,26 @@ img.proof-media {
   margin-top: 0;
 }
 
-.audience-panel-brand {
+.panel-brand {
   background: var(--color-brand);
   border-color: var(--color-brand);
   color: var(--color-on-brand);
 }
 
-.audience-panel-brand .audience-head {
+.panel-brand .panel-head {
   border-bottom-color: var(--color-line-on-brand);
 }
 
-.audience-panel-brand .audience-icon {
+.panel-brand .panel-icon {
   background: rgb(255 255 255 / 0.12);
   color: var(--color-on-brand);
 }
 
-.audience-panel-brand .service-list li > .icon {
+.panel-brand .service-list li > .icon {
   color: var(--color-on-brand-muted);
 }
 
-.audience-panel-brand .service-list p {
+.panel-brand .service-list p {
   color: var(--color-on-brand-muted);
 }
 
@@ -906,23 +912,21 @@ img.proof-media {
 
 .offices {
   display: grid;
-  gap: var(--space-7);
+  gap: var(--space-5);
 }
 
 .office {
-  padding-top: var(--space-5);
-  border-top: 2px solid var(--color-text);
+  gap: var(--space-4);
 }
 
 .office address {
-  margin-top: var(--space-3);
   font-style: normal;
 }
 
 .office ul {
   display: grid;
   gap: var(--space-1);
-  margin: var(--space-4) 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -1018,13 +1022,25 @@ img.proof-media {
 
 .steps li {
   counter-increment: step;
-  padding-top: var(--space-4);
-  border-top: 2px solid var(--color-text);
+  padding: var(--space-6) var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
 }
 
-.steps h3::before {
-  content: counter(step) ". ";
-  color: var(--color-brand);
+.steps li::before {
+  content: counter(step);
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: var(--space-4);
+  border-radius: 50%;
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 700;
 }
 
 .steps p {
@@ -1095,6 +1111,12 @@ img.proof-media {
 
   .offices {
     grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .split {
+    grid-template-columns: 7fr 5fr;
+    align-items: start;
   }
 
   .audiences {
@@ -1102,7 +1124,7 @@ img.proof-media {
     gap: var(--space-6);
   }
 
-  .audience-panel {
+  .panel {
     padding: var(--space-7) var(--space-6);
   }
 
@@ -1217,14 +1239,33 @@ img.proof-media {
   margin-bottom: var(--space-6);
 }
 
-/* Explicit ratio and start alignment: as a grid item the image otherwise has no reserved height before it loads. */
-.badge {
-  width: 16rem;
-  aspect-ratio: 520 / 266;
-  justify-self: start;
+/* Registration card: the TPB badge on white, beside the registration text. Explicit ratio so the image has reserved height before it loads. */
+.registration-card {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-4);
   align-self: start;
-  margin-top: var(--space-4);
-  mix-blend-mode: multiply;
+  margin: 0;
+  padding: var(--space-6) var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.registration-card img {
+  width: min(100%, 20rem);
+  height: auto;
+  aspect-ratio: 520 / 266;
+}
+
+.registration-card figcaption {
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.gap-above-xl {
+  margin-top: var(--space-8);
 }
 
 .proof-list a {

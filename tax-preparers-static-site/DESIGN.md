@@ -27,8 +27,10 @@ IBM Plex Sans, self-hosted: 400 and 600 upright, 700 italic. `h1` and `h2` are b
 
 - Shell: 72rem maximum, fluid gutter. Breakpoints at 26rem, 44rem, 56rem.
 - Header: sticky white bar with logo and call button; navigation moves to a second row under 56rem (no menu toggle).
-- Ruled rows (`.ledger`, `.office`, `.steps`): a 2px rule above and hairlines between.
-- Audience panels (`.audiences`, home page services): two panels side by side, individuals on white with a hairline border, business filled in brand navy. Each opens with an Iconoir icon in a round tint and an italic `h3`, lists services with check marks, and ends with a button; the individuals panel carries the price line (`.audience-price`) on a navy tint so both panels end level.
+- Ruled rows (`.ledger` in the hero, common questions): a 2px rule above and hairlines between.
+- Panels (`.panel`, `.panel-head`, `.panel-icon`): white cards with a hairline border and medium radius, opened by an Iconoir icon in a round navy tint beside an italic `h3`. `.panel-brand` fills the card in brand navy. Used for the services (`.audiences`: home page, individuals on white and business on navy, each ending with a button; the individuals panel carries the price line `.audience-price` so both end level; taxation page, tax returns on white and other specialisms on navy) and for the offices on the home and contact pages.
+- Steps (`.steps`, taxation page): white cards on the tinted band, each opened by a round navy number in bold italic, matching the panel icons.
+- Registration card (`.registration-card`, taxation page): the TPB badge on a white card beside the registration text.
 - Buttons: `.button-action` (amber), `.button-ghost` (on navy), `.button-outline` (on light); 48px minimum height.
 - Review carousel: horizontally scrolling list with scroll snap and no visible scrollbar, previous and next buttons, position dots, text clamped to six lines with a "See more" button; becomes a static grid under reduced motion.
 - Common questions: native `details` rows, collapsed by default.
