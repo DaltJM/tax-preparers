@@ -21,20 +21,20 @@ Strategy: committed. Navy owns whole regions; amber marks the one action.
 
 ## Type
 
-IBM Plex Sans, self-hosted: 400 and 600 upright, 700 italic. `h1` and `h2` are bold italic with tight tracking, echoing the slanted logo wordmark. Body is 17px at 1.6. Numerals are tabular everywhere.
+IBM Plex Sans, self-hosted: 400 and 600 upright, 700 italic. Italic is used sparingly: only `h1` (bold italic, echoing the slanted logo wordmark) and the closing quote. `h2`, panel headings, prices and step numbers are upright 600 with tight tracking. Body is 17px at 1.6. Numerals are tabular everywhere.
 
 ## Layout and components
 
 - Shell: 72rem maximum, fluid gutter. Breakpoints at 26rem, 44rem, 56rem.
 - Header: sticky white bar with logo and call button; navigation moves to a second row under 56rem (no menu toggle).
 - Ruled rows (`.ledger` in the hero, common questions): a 2px rule above and hairlines between.
-- Panels (`.panel`, `.panel-head`, `.panel-icon`): white cards with a hairline border and medium radius, opened by an Iconoir icon in a round navy tint beside an italic `h3`. `.panel-brand` fills the card in brand navy. Used for the services (`.audiences`: home page, individuals on white and business on navy, each ending with a button; the individuals panel carries the price line `.audience-price` so both end level; taxation page, tax returns on white and other specialisms on navy) and for the offices on the home and contact pages.
-- Steps (`.steps`, taxation page): white cards on the tinted band, each opened by a round navy number in bold italic, matching the panel icons.
+- Panels (`.panel`, `.panel-head`, `.panel-icon`): white cards with a hairline border and medium radius, opened by an Iconoir icon in a round navy tint beside an `h3`. `.panel-brand` fills the card in brand navy. Used for the services (`.audiences`: home page, individuals on white and business on navy, each ending with a button; the individuals panel carries the price line `.audience-price` so both end level; taxation page, tax returns on white and other specialisms on navy) and for the offices on the home and contact pages.
+- Steps (`.steps`, taxation page): white cards on the tinted band, each opened by a round navy number in semibold, matching the panel icons.
 - Registration card (`.registration-card`, taxation page): the TPB badge on a white card beside the registration text.
 - Buttons: `.button-action` (amber), `.button-ghost` (on navy), `.button-outline` (on light); 48px minimum height.
 - Review carousel: horizontally scrolling list with scroll snap and no visible scrollbar, previous and next buttons, position dots, text clamped to six lines with a "See more" button; becomes a static grid under reduced motion.
 - Common questions: native `details` rows, collapsed by default.
-- Price line (`.hero-price`): the starting price as a plain bold italic line under the headline, no box.
+- Price line (`.hero-price`): the starting price as a plain semibold line under the headline, no box.
 - Placeholders: `.placeholder-note` dashed box and `placeholder.svg`.
 - Icons: Iconoir regular, 1.5 stroke, inline sprite, `currentColor`.
 

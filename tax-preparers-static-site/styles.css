@@ -127,10 +127,15 @@ h3 {
   text-wrap: balance;
 }
 
-h1,
-h2 {
+/* Italic is kept for the page titles, echoing the slanted logo wordmark, and the closing quote. Everything else is upright. */
+h1 {
   font-style: italic;
   font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-weight: 600;
   letter-spacing: -0.02em;
 }
 
@@ -600,8 +605,7 @@ img.proof-media {
 
 .panel-head h3 {
   font-size: clamp(1.5rem, 1.2rem + 1vw, 1.875rem);
-  font-style: italic;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.02em;
   line-height: 1.15;
 }
@@ -668,8 +672,7 @@ img.proof-media {
   border-radius: var(--radius-sm);
   color: var(--color-brand);
   font-size: 1.5rem;
-  font-style: italic;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
   letter-spacing: -0.02em;
 }
@@ -1039,8 +1042,7 @@ img.proof-media {
   background: var(--color-brand);
   color: var(--color-on-brand);
   font-size: 1.5rem;
-  font-style: italic;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .steps p {
@@ -1350,8 +1352,7 @@ img.proof-media {
   margin-top: var(--space-5);
   color: var(--color-on-brand);
   font-size: clamp(1.5rem, 1.05rem + 1.9vw, 2.25rem);
-  font-style: italic;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.02em;
 }
