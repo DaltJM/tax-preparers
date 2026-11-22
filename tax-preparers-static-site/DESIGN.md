@@ -21,7 +21,7 @@ Strategy: committed. Navy owns whole regions; amber marks the one action.
 
 ## Type
 
-IBM Plex Sans, self-hosted: 400 and 600 upright, 700 italic. Italic is used sparingly: only `h1` (bold italic, echoing the slanted logo wordmark) and the closing quote. `h2`, panel headings, prices and step numbers are upright 600 with tight tracking. Body is 17px at 1.6. Numerals are tabular everywhere.
+IBM Plex Sans, self-hosted: 400 and 600 upright, 700 italic. Italic is used only for the closing quote. All headings, prices and step numbers are upright 600 with tight tracking. Body is 17px at 1.6. Numerals are tabular everywhere.
 
 ## Layout and components
 
@@ -33,7 +33,7 @@ IBM Plex Sans, self-hosted: 400 and 600 upright, 700 italic. Italic is used spar
 - Registration card (`.registration-card`, taxation page): the TPB badge on a white card beside the registration text.
 - Buttons: `.button-action` (amber), `.button-ghost` (on navy), `.button-outline` (on light); 48px minimum height.
 - Review carousel: horizontally scrolling list with scroll snap and no visible scrollbar, previous and next buttons, position dots, text clamped to six lines with a "See more" button; becomes a static grid under reduced motion.
-- Common questions: native `details` rows, collapsed by default.
+- Common questions: native `details` rows, collapsed by default. On wide screens (`.faq-layout`) the heading and a call button sit in the left column and the questions fill the right.
 - Price line (`.hero-price`): the starting price as a plain semibold line under the headline, no box.
 - Placeholders: `.placeholder-note` dashed box and `placeholder.svg`.
 - Icons: Iconoir regular, 1.5 stroke, inline sprite, `currentColor`.

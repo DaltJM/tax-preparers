@@ -127,10 +127,9 @@ h3 {
   text-wrap: balance;
 }
 
-/* Italic is kept for the page titles, echoing the slanted logo wordmark, and the closing quote. Everything else is upright. */
+/* Italic is kept for the closing quote only. Headings are upright. */
 h1 {
-  font-style: italic;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: -0.02em;
 }
 
@@ -1303,10 +1302,28 @@ img.proof-media {
 
 /* Common questions */
 
+/* Heading and a call button on the left, the questions across the rest of the width. */
+.faq-layout {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.faq-aside {
+  display: grid;
+  gap: var(--space-5);
+  justify-items: start;
+  align-content: start;
+}
+
 .faq {
-  max-width: 48rem;
-  margin-top: var(--space-5);
   border-top: 2px solid var(--color-text);
+}
+
+@media (min-width: 56rem) {
+  .faq-layout {
+    grid-template-columns: 5fr 7fr;
+    column-gap: var(--space-7);
+  }
 }
 
 .faq details {
