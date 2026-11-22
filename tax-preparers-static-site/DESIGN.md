@@ -26,6 +26,7 @@ IBM Plex Sans, self-hosted: 400 and 600 upright, 700 italic. Italic is used only
 ## Layout and components
 
 - Shell: 72rem maximum, fluid gutter. Breakpoints at 26rem, 44rem, 56rem.
+- Proof strip (`.proof`, under the home page hero): three equal items split by hairlines, each a 3.5rem round marker (the TPB symbol, an amber star on a navy tint, a check on a navy tint) beside a semibold title and a short line.
 - Header: sticky white bar with logo and call button; navigation moves to a second row under 56rem (no menu toggle).
 - Ruled rows (`.ledger` in the hero, common questions): a 2px rule above and hairlines between.
 - Panels (`.panel`, `.panel-head`, `.panel-icon`): white cards with a hairline border and medium radius, opened by an Iconoir icon in a round navy tint beside an `h3`. `.panel-brand` fills the card in brand navy. Used for the services (`.audiences`: home page, individuals on white and business on navy, each ending with a button; the individuals panel carries the price line `.audience-price` so both end level; taxation page, tax returns on white and other specialisms on navy) and for the offices on the home and contact pages.

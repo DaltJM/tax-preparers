@@ -496,9 +496,10 @@ a:hover {
   border-top: 0;
 }
 
+/* Every marker is the same 3.5rem circle as the panel icons. */
 .proof-media {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
   flex: none;
 }
 
@@ -506,6 +507,7 @@ a:hover {
 img.proof-media {
   object-fit: cover;
   object-position: 15% 50%;
+  border-radius: 50%;
   mix-blend-mode: multiply;
 }
 
@@ -517,14 +519,6 @@ img.proof-media {
 .proof-list strong {
   display: block;
   font-size: 1.125rem;
-}
-
-.rating {
-  display: grid;
-  place-items: center;
-  font-size: 2.25rem;
-  font-weight: 600;
-  line-height: 1;
 }
 
 .stars {
@@ -549,6 +543,21 @@ img.proof-media {
 .proof-mark .icon {
   width: 1.75rem;
   height: 1.75rem;
+}
+
+.proof-rating {
+  color: var(--color-rating);
+}
+
+.proof-rating .icon {
+  fill: currentColor;
+}
+
+.proof-reviews {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-2);
 }
 
 /* Sections */
@@ -1107,7 +1116,11 @@ img.proof-media {
 
   .proof-list li {
     border-top: 0;
-    align-items: flex-start;
+  }
+
+  .proof-list li + li {
+    padding-left: var(--space-6);
+    border-left: 1px solid var(--color-line);
   }
 
   .offices {
