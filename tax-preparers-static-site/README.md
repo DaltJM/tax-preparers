@@ -69,13 +69,16 @@ Lighthouse 12.8.2, 1 October 2026, home page. The live site was tested at http:/
 
 The "appears" rows above are Lighthouse's default *simulated* estimates for a slow 4G phone (three runs gave 22.6 to 23.2 s for the live site). They are calculated, not timed, and overstate what a visitor sees. Timed with the connection really slowed to the same slow 4G speed (`--throttling-method=devtools`, 1.6 Mbps, 150 ms delay, 4x slower processor):
 
-| Timed on slow 4G, mobile | Live | Concept |
-|---|---|---|
-| First content appears | 4.4 s | 2.0 s |
-| Main content appears (LCP) | 15.4 s | 2.1 s |
-| Page finishes loading | 23.3 s | 2.3 s |
+| Timed on slow 4G, mobile | Live, 1 Oct | Concept, 1 Oct | Live, 22 Nov | Concept, 22 Nov |
+|---|---|---|---|---|
+| First content appears | 4.4 s | 2.0 s | 5.6 s | 2.0 s |
+| Main content appears (LCP) | 15.4 s | 2.1 s | 16.5 s | 2.0 s |
+| Page finishes loading | 23.3 s | 2.3 s | 24.5 s | 2.7 s |
+| Download | 3,802 KB, 136 files | 152 KB, 10 files | 3,803 KB, 136 files | 167 KB, 9 files |
 
-With no slowing at all, on this office connection, the live site showed first content at about 4 s and its main image at 5 to 14 s across three runs. The brief quotes the timed slow-4G figures.
+The 22 November run (Lighthouse 12.8.2, same settings) followed that day's design changes; the concept is 15 KB heavier because the panel icons are inlined in the page.
+
+With no slowing at all, on this office connection, the live site showed first content at about 4 s and its main image at 5 to 14 s across three runs. The brief quotes the timed slow-4G figures from 22 November.
 
 The live site's SEO score was 85; the concept's is 69 only because of the preview `noindex`.
 
