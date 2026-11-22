@@ -31,6 +31,8 @@
       <symbol id="i-nav-arrow-left" viewBox="0 0 24 24"><path d="M15 6L9 12L15 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
       <symbol id="i-nav-arrow-right" viewBox="0 0 24 24"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
       <symbol id="i-nav-arrow-down" viewBox="0 0 24 24"><path d="M6 9L12 15L18 9" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-group" viewBox="0 0 24 24"><path d="M1 20V19C1 15.134 4.13401 12 8 12V12C11.866 12 15 15.134 15 19V20" stroke="currentColor" stroke-linecap="round"/><path d="M13 14V14C13 11.2386 15.2386 9 18 9V9C20.7614 9 23 11.2386 23 14V14.5" stroke="currentColor" stroke-linecap="round"/><path d="M8 12C10.2091 12 12 10.2091 12 8C12 5.79086 10.2091 4 8 4C5.79086 4 4 5.79086 4 8C4 10.2091 5.79086 12 8 12Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 9C19.6569 9 21 7.65685 21 6C21 4.34315 19.6569 3 18 3C16.3431 3 15 4.34315 15 6C15 7.65685 16.3431 9 18 9Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-city" viewBox="0 0 24 24"><path d="M7 9.01L7.01 8.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 9.01L11.01 8.99889" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 13.01L7.01 12.9989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 13.01L11.01 12.9989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 17.01L7.01 16.9989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M11 17.01L11.01 16.9989" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 21H3.6C3.26863 21 3 20.7314 3 20.4V5.6C3 5.26863 3.26863 5 3.6 5H9V3.6C9 3.26863 9.26863 3 9.6 3H14.4C14.7314 3 15 3.26863 15 3.6V9M15 21H20.4C20.7314 21 21 20.7314 21 20.4V9.6C21 9.26863 20.7314 9 20.4 9H15M15 21V17M15 9V13M15 13H17M15 13V17M15 17H17" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
       <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 13L9 17L19 7" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
       <symbol id="i-star" viewBox="0 0 24 24"><path d="M8.58737 8.23597L11.1849 3.00376C11.5183 2.33208 12.4817 2.33208 12.8151 3.00376L15.4126 8.23597L21.2215 9.08017C21.9668 9.18848 22.2638 10.0994 21.7243 10.6219L17.5217 14.6918L18.5135 20.4414C18.6409 21.1798 17.8614 21.7428 17.1945 21.3941L12 18.678L6.80547 21.3941C6.1386 21.7428 5.35909 21.1798 5.48645 20.4414L6.47825 14.6918L2.27575 10.6219C1.73617 10.0994 2.03322 9.18848 2.77852 9.08017L8.58737 8.23597Z" fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     </svg>
@@ -113,27 +115,34 @@
             <h2>Tax advice that is personal, proactive and dynamic</h2>
             <p>Our clients come from many walks of life: owners and directors of small and medium size businesses and other professionals, family groups, executives and individual investors.</p>
           </div>
-          <div class="split">
-            <div class="audience">
-              <h3>For individuals and families</h3>
-              <ul class="rows">
-                <li><strong>Individual Tax Returns</strong><p>Each client is provided personal service best suited for their situation.</p></li>
-                <li><strong>Capital Gains Advice</strong></li>
-                <li><strong>Self Managed Super Fund Tax Returns</strong></li>
-                <li><strong>Estate Planning</strong></li>
+          <div class="audiences">
+            <div class="audience-panel">
+              <div class="audience-head">
+                <span class="audience-icon"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-group"/></svg></span>
+                <h3>For individuals and families</h3>
+              </div>
+              <ul class="service-list">
+                <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-check"/></svg><div><strong>Individual Tax Returns</strong><p>Each client is provided personal service best suited for their situation.</p></div></li>
+                <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-check"/></svg><div><strong>Capital Gains Advice</strong></div></li>
+                <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-check"/></svg><div><strong>Self Managed Super Fund Tax Returns</strong></div></li>
+                <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-check"/></svg><div><strong>Estate Planning</strong></div></li>
               </ul>
-              <a class="text-link" href="taxation/"><span>About our tax returns</span><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-arrow-right"/></svg></a>
+              <p class="audience-price">Tax Return from <strong>$120</strong></p>
+              <a class="button button-outline" href="taxation/"><span>About our tax returns</span><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-arrow-right"/></svg></a>
             </div>
-            <div class="audience">
-              <h3>For your business</h3>
-              <ul class="rows">
-                <li><strong>Business Activity Statements</strong><p>We Provide Tax Compliant BAS services and ensure timely Completion.</p></li>
-                <li><strong>Book-Keeping</strong><p>Efficiency, Reliability and Tax Compliance is our motto in providing book-keeping services.</p></li>
-                <li><strong>ASIC</strong><p>We are ASIC registered agents we act as an intermediary between Australian companies &amp; ASIC.</p></li>
-                <li><strong>Business Consulting &amp; Due Diligence</strong><p>We are a financial and business consulting firm in a broad array of services with particular focus on startups.</p></li>
-                <li><strong>Company, Trust and Partnership Tax Returns</strong></li>
+            <div class="audience-panel audience-panel-brand">
+              <div class="audience-head">
+                <span class="audience-icon"><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-city"/></svg></span>
+                <h3>For your business</h3>
+              </div>
+              <ul class="service-list">
+                <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-check"/></svg><div><strong>Business Activity Statements</strong><p>We Provide Tax Compliant BAS services and ensure timely Completion.</p></div></li>
+                <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-check"/></svg><div><strong>Book-Keeping</strong><p>Efficiency, Reliability and Tax Compliance is our motto in providing book-keeping services.</p></div></li>
+                <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-check"/></svg><div><strong>ASIC</strong><p>We are ASIC registered agents we act as an intermediary between Australian companies &amp; ASIC.</p></div></li>
+                <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-check"/></svg><div><strong>Business Consulting &amp; Due Diligence</strong><p>We are a financial and business consulting firm in a broad array of services with particular focus on startups.</p></div></li>
+                <li><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-check"/></svg><div><strong>Company, Trust and Partnership Tax Returns</strong></div></li>
               </ul>
-              <a class="text-link" href="contacts/"><span>Talk to us about your business</span><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-arrow-right"/></svg></a>
+              <a class="button button-ghost" href="contacts/"><span>Talk to us about your business</span><svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#i-arrow-right"/></svg></a>
             </div>
           </div>
         </div>

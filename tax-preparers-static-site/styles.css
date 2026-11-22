@@ -567,41 +567,132 @@ img.proof-media {
   color: var(--color-text-muted);
 }
 
-.split {
+/* Services: one panel per audience. Individuals on white, business on the brand navy. */
+
+.audiences {
   display: grid;
-  gap: var(--space-7);
+  gap: var(--space-5);
 }
 
-.rows {
-  margin: var(--space-5) 0 0;
-  padding: 0;
-  list-style: none;
-  border-top: 2px solid var(--color-text);
+.audience-panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-6) var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
 }
 
-.rows li {
-  padding-block: var(--space-4);
+.audience-head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding-bottom: var(--space-5);
   border-bottom: 1px solid var(--color-line);
 }
 
-.rows h3 + p,
-.rows strong + p {
+.audience-head h3 {
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 1.875rem);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.audience-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: var(--color-band);
+  color: var(--color-brand);
+}
+
+.audience-icon .icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.service-list {
+  display: grid;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.service-list li > .icon {
+  width: 1.375rem;
+  height: 1.375rem;
+  margin-top: 0.15rem;
+  stroke-width: 2;
+  color: var(--color-brand);
+}
+
+.service-list strong {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.service-list p {
   margin-top: var(--space-1);
   color: var(--color-text-muted);
 }
 
-.rows strong {
-  font-size: 1.1875rem;
-  font-weight: 600;
+.audience-panel .button {
+  align-self: flex-start;
+  margin-top: auto;
 }
 
-.audience > p {
-  margin-top: var(--space-3);
-  color: var(--color-text-muted);
+/* The advertised starting price fills the shorter panel and sits with its button. */
+.audience-price {
+  margin-top: auto;
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-band);
+  border-radius: var(--radius-sm);
+  color: var(--color-brand);
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
 }
 
-.audience .text-link {
-  margin-top: var(--space-4);
+.audience-price + .button {
+  margin-top: 0;
+}
+
+.audience-panel-brand {
+  background: var(--color-brand);
+  border-color: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
+.audience-panel-brand .audience-head {
+  border-bottom-color: var(--color-line-on-brand);
+}
+
+.audience-panel-brand .audience-icon {
+  background: rgb(255 255 255 / 0.12);
+  color: var(--color-on-brand);
+}
+
+.audience-panel-brand .service-list li > .icon {
+  color: var(--color-on-brand-muted);
+}
+
+.audience-panel-brand .service-list p {
+  color: var(--color-on-brand-muted);
 }
 
 /* Agent placeholder */
@@ -1002,9 +1093,17 @@ img.proof-media {
     align-items: flex-start;
   }
 
-  .split,
   .offices {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .audiences {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+  }
+
+  .audience-panel {
+    padding: var(--space-7) var(--space-6);
   }
 
   /* Three lines, the longer of the two addresses, so both offices are the same height. */

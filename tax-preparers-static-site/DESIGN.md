@@ -27,7 +27,8 @@ IBM Plex Sans, self-hosted: 400 and 600 upright, 700 italic. `h1` and `h2` are b
 
 - Shell: 72rem maximum, fluid gutter. Breakpoints at 26rem, 44rem, 56rem.
 - Header: sticky white bar with logo and call button; navigation moves to a second row under 56rem (no menu toggle).
-- Ruled rows (`.rows`, `.ledger`, `.office`, `.steps`): a 2px rule above and hairlines between. These replace cards.
+- Ruled rows (`.ledger`, `.office`, `.steps`): a 2px rule above and hairlines between.
+- Audience panels (`.audiences`, home page services): two panels side by side, individuals on white with a hairline border, business filled in brand navy. Each opens with an Iconoir icon in a round tint and an italic `h3`, lists services with check marks, and ends with a button; the individuals panel carries the price line (`.audience-price`) on a navy tint so both panels end level.
 - Buttons: `.button-action` (amber), `.button-ghost` (on navy), `.button-outline` (on light); 48px minimum height.
 - Review carousel: horizontally scrolling list with scroll snap and no visible scrollbar, previous and next buttons, position dots, text clamped to six lines with a "See more" button; becomes a static grid under reduced motion.
 - Common questions: native `details` rows, collapsed by default.

@@ -109,7 +109,7 @@ Kept word for word, including the business's own phrasing: "customer service ori
 
 ## Price shown
 
-"Tax Return from $120" is shown as the line under the headline on the home page and on `/taxation/`, in the "Common questions" answer ("Tax returns are from $120. Call 0469 348 170 for a price for your situation."), and in `llms.txt`. The wording and figure come from the live site's home page banner (an image uploaded in March 2026). **The owner must confirm it is still current before launch.** The question, and the second sentence of its answer, are concept copy.
+"Tax Return from $120" is shown as the line under the headline on the home page and on `/taxation/`, in the "For individuals and families" panel on the home page, in the "Common questions" answer ("Tax returns are from $120. Call 0469 348 170 for a price for your situation."), and in `llms.txt`. The wording and figure come from the live site's home page banner (an image uploaded in March 2026). **The owner must confirm it is still current before launch.** The question, and the second sentence of its answer, are concept copy.
 
 ## Left out on purpose
 
@@ -136,7 +136,7 @@ Everything is served from this folder; nothing loads from another host.
 | Asset | Source | Version | Licence |
 |---|---|---|---|
 | IBM Plex Sans (400, 600, 700 italic; latin woff2) | `@fontsource/ibm-plex-sans` | 5.3.0 | SIL Open Font License 1.1, `assets/fonts/LICENSE-ibm-plex-sans.txt` |
-| Icons (phone, mail, map-pin, arrow-right, nav-arrow-left, nav-arrow-right, nav-arrow-down, check, star) | Iconoir | 7.12.1 | MIT, `assets/icons/LICENSE-iconoir.txt` (linked from the footer) |
+| Icons (phone, mail, map-pin, arrow-right, nav-arrow-left, nav-arrow-right, nav-arrow-down, check, star, group, city) | Iconoir | 7.12.1 | MIT, `assets/icons/LICENSE-iconoir.txt` (linked from the footer) |
 | `assets/images/taxpreparers-logo.svg` | Traced with potrace from the business's 300x79 PNG logo (`/wp-content/uploads/2016/12/logo.png`), navy shapes only, with padding added around it | n/a | Owned by the business. **A trace, not their original artwork**: the drop shadow is left out and edges are approximate. The owner should supply the original file or approve this one. The `.png` original is kept for the structured data |
 | `assets/images/tpb-registered-tax-agent.webp` | The business's live site (`/wp-content/uploads/2016/09/taxagent.jpg`), resized to 520x266 WebP. On the home page CSS shows only the round symbol and the agent number is set as text beside it | n/a | Tax Practitioners Board registered tax agent symbol, as displayed by the business; use is subject to TPB's rules and the registration being current |
 | `assets/images/placeholder.svg` | `prospect-site-concept` skill | n/a | Consultancy's own |
