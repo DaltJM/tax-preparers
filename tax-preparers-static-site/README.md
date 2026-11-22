@@ -22,7 +22,13 @@ Plain static files, no build step. Serve the folder from its root, for example:
 python -m http.server 8137 --bind 127.0.0.1
 ```
 
-Links and assets use root-relative paths, so open it through a server, not as a file.
+Links and assets use relative paths, so the site works at a domain root or under a subpath such as GitHub Pages' `/tax-preparers/`. Open it through a server, not as a file, so folder links like `taxation/` resolve to their `index.html`.
+
+## Preview on GitHub Pages
+
+`.github/workflows/pages.yml` (at the repository root) publishes the concept to GitHub Pages on every push to the `github-pages` branch, or when run by hand from the Actions tab. It publishes the site files only: `docs/`, the `*.md` notes and `.impeccable/` are left out. The preview stays `noindex`. One-time setup in the repository settings: Pages → Source: "GitHub Actions"; and Environments → `github-pages` → allow the `github-pages` branch to deploy.
+
+Note that a Pages site on a public repository is public, and a Pages site on a free private repository is not available. Anyone with the link can see the concept before the owner has.
 
 ## Pages and their live addresses
 
