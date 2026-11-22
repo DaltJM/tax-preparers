@@ -150,29 +150,29 @@ Working enquiry form, analytics, hosting, redirects, sitemap, the five remaining
 
 ## Quality record
 
-Recorded 1 October 2026 against the local build served by `python -m http.server` (no compression, no cache headers) at http://127.0.0.1:8137/. One automated run each; treat the results as evidence, not proof of WCAG conformance.
+Re-recorded 22 November 2026, after the design changes of that day (service and office panels, step cards, registration card, proof strip, upright headings, two-column common questions), against the local build served by `python -m http.server` (no compression, no cache headers) at http://127.0.0.1:8137/. One automated run each; treat the results as evidence, not proof of WCAG conformance. The first record was made on 1 October 2026.
 
 ### Tools
 
 | Tool | Version | Context |
 |---|---|---|
 | Lighthouse | 12.8.2 (headless Chrome, `npx lighthouse@12`) | Mobile (default throttling) and `--preset=desktop`, all three pages |
-| axe-core | 4.13.0 | All rules, each page at 1280 px and 320 px |
-| Playwright (Chromium) | MCP server | Screenshots, width sweep, keyboard and text-spacing checks |
-| Impeccable detector | 4.4.0 | `impeccable detect` on the three pages and `styles.css` |
+| axe-core | 4.14.1 | WCAG 2.0, 2.1 and 2.2 A and AA rules plus best practices, each page at 1280 px and 320 px, all questions open and reviews expanded |
+| Playwright with installed Chrome | `playwright-core` 1.x | Screenshots, width sweep, target sizes, keyboard, text spacing, 200% zoom, reduced-motion emulation |
+| Impeccable detector | 4.4.0 | Run on 1 October only; not re-run after the 22 November changes |
 
 ### Lighthouse
 
 | Page | Mode | Performance | Accessibility | Best practices | SEO | LCP | TBT | CLS | Weight |
 |---|---|---|---|---|---|---|---|---|---|
-| `/` | Mobile | 99 | 100 | 100 | 69 | 1.9 s | 0 ms | 0 | 159 KB |
-| `/` | Desktop | 100 | 100 | 100 | 69 | 0.4 s | 0 ms | 0 | 159 KB |
-| `/taxation/` | Mobile | 100 | 100 | 100 | 69 | 1.7 s | 0 ms | 0 | 141 KB |
-| `/taxation/` | Desktop | 100 | 100 | 100 | 69 | 0.4 s | 0 ms | 0 | 141 KB |
-| `/contacts/` | Mobile | 100 | 100 | 100 | 69 | 1.7 s | 0 ms | 0 | 127 KB |
-| `/contacts/` | Desktop | 100 | 100 | 100 | 69 | 0.4 s | 0 ms | 0 | 127 KB |
+| `/` | Mobile | 99 | 100 | 100 | 69 | 2.1 s | 0 ms | 0 | 168 KB |
+| `/` | Desktop | 100 | 100 | 100 | 69 | 0.5 s | 0 ms | 0 | 168 KB |
+| `/taxation/` | Mobile | 100 | 100 | 100 | 69 | 1.9 s | 0 ms | 0 | 148 KB |
+| `/taxation/` | Desktop | 100 | 100 | 100 | 69 | 0.4 s | 0 ms | 0 | 148 KB |
+| `/contacts/` | Mobile | 100 | 100 | 100 | 69 | 1.5 s | 0 ms | 0 | 108 KB |
+| `/contacts/` | Desktop | 100 | 100 | 100 | 69 | 0.3 s | 0 ms | 0 | 108 KB |
 
-These are the final runs, taken after the last round of changes (price line, enquiry button, collapsed questions, new review carousel, traced logo). LCP here is Lighthouse's simulated figure; see "Live site and concept, measured the same way" for timed figures.
+LCP here is Lighthouse's simulated figure; see "Live site and concept, measured the same way" for timed figures (those are from 1 October). The home page's mobile Performance of 99 comes from its simulated LCP of 2.1 s, which is inside the 2.5 s "good" threshold. Pages are 7 to 19 KB heavier than on 1 October because the panel icons are inlined in each page; the contact page is lighter because it no longer preloads the italic font.
 
 **Known exception:** SEO is 69 on every run because of one audit, `is-crawlable`. That is the deliberate preview `noindex`. Remove the `noindex` meta tag and the `robots.txt` Disallow at launch and re-run. No other SEO, accessibility or best-practice audit failed.
 
@@ -180,15 +180,15 @@ Lighthouse's remaining performance suggestions (text compression, cache lifetime
 
 ### Accessibility checks
 
-The criterion-by-criterion record is in `docs/WCAG-2.2-AA.md`; it was redone after the last round of changes. The notes below are the supporting checks.
+The criterion-by-criterion record is in `docs/WCAG-2.2-AA.md`; it was redone on 22 November 2026. The notes below are the supporting checks.
 
 - axe-core: 0 violations and 0 "incomplete" items on all three pages at 1280 px and 320 px.
-- Contrast: lowest text pair is 4.9:1 (hero list heading on navy); the call button is 8.0:1.
-- Width sweep at 320, 375, 414, 768, 1024, 1280, 1440 and 1920 px on all three pages (24 checks): no horizontal scroll, no link or button under 24x24 px. Done by measuring each width in a frame; full-page screenshots were viewed at 375 and 1440 px only.
-- 200% zoom: equivalent to the 640 to 720 px layouts in the sweep; no loss of content.
-- Text spacing (line height 1.5, letter spacing 0.12em, word spacing 0.16em, paragraph spacing 2em) at 320 px: no horizontal scroll on the home and contact pages after the fix below; the tax returns page passed before it. The review cards stay clamped to six lines by design; the full text is in the HTML and one link away on Google.
-- Keyboard: first Tab lands on a visible "Skip to main content" link with a 3 px focus outline; tab order follows the visual order (27 stops on the home page). The review "Next" button scrolls one card, enables "Previous", and announces "Showing review 2 of 5".
-- Reduced motion: the hero stroke animation and transitions are removed and the reviews become a static list (checked in CSS, not in a browser with the setting on).
+- Contrast: lowest text pair is 4.9:1 (muted text on navy, in the hero and the business panel); the call button is 8.0:1. The new panel, step and price colours are all 7.3:1 or higher.
+- Width sweep at 320, 375, 414, 768, 1024, 1280, 1440 and 1920 px on all three pages (24 checks): no horizontal scroll, no link, button or question under 24x24 px.
+- 200% zoom (640 CSS px): no horizontal scroll on any page.
+- Text spacing (line height 1.5, letter spacing 0.12em, word spacing 0.16em, paragraph spacing 2em) at 320 px with everything expanded: no horizontal scroll and no clipped visible text on any page.
+- Keyboard: first Tab lands on a visible "Skip to main content" link on every page; every stop has a visible outline, none is hidden behind the sticky header, and the order follows the page (37 stops on the home page). Questions open with Enter; the review "Next" button announces "Showing review 2 of 5"; "See more" sets `aria-expanded`.
+- Reduced motion, emulated in the browser: no animation runs and the reviews become a static grid.
 
 ### Fixes made during review
 
@@ -207,6 +207,7 @@ The criterion-by-criterion record is in `docs/WCAG-2.2-AA.md`; it was redone aft
 - Review carousel follows the Northern Foot Clinic pattern: no visible scrollbar, position dots, and "See more" on reviews that are cut short.
 - Section headings and their side text now share the two-column grid of the content below; both offices are the same height.
 - Ghost button border raised to 4.9:1 on navy.
+- 22 November: the tax returns page lost its two-column intro when the `.split` style was removed with the old services lists; restored before this record.
 
 ### Detector findings left as they are
 
@@ -215,8 +216,7 @@ The criterion-by-criterion record is in `docs/WCAG-2.2-AA.md`; it was redone aft
 ### Still unchecked
 
 - A real screen reader (NVDA, VoiceOver) and a real phone.
-- A browser with `prefers-reduced-motion` switched on.
-- Browsers other than Chromium.
+- Browsers other than Chrome, and Windows high-contrast (forced colours) mode.
 - Field Core Web Vitals (none exist for a local preview) and behaviour behind real hosting with compression and caching.
 - The Tax Practitioners Board register entry for agent number 25492655.
-- Impeccable's separate finish-reviewer and documenter agents were not run; the review and `DESIGN.md` were done in this session.
+- Impeccable's separate finish-reviewer and documenter agents were not run, and its detector was not re-run after the 22 November changes.
