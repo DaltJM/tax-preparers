@@ -78,6 +78,8 @@ The "appears" rows above are Lighthouse's default *simulated* estimates for a sl
 
 The 22 November run (Lighthouse 12.8.2, same settings) followed that day's design changes; the concept is 15 KB heavier because the panel icons are inlined in the page.
 
+**What a phone actually shows (22 November).** Recorded with Chrome's screencast on a 375 x 812 phone screen, with Lighthouse's slow-4G settings (562.5 ms latency, 1,475 kbps down, 4x slower processor) and the cache off. Today's site: blank until about 5 s, then a full-screen loading animation, with its content first visible between 22 and 25 s; three runs agreed. The concept: its whole first screen at 2.0 s, finished by 3.1 s. Lighthouse's 16.5 s LCP for today's site is earlier than what is visible because the loading animation covers the page. The brief's filmstrip uses frames at 2, 5, 16 and 25 s.
+
 With no slowing at all, on this office connection, the live site showed first content at about 4 s and its main image at 5 to 14 s across three runs. The brief quotes the timed slow-4G figures from 22 November.
 
 The live site's SEO score was 85; the concept's is 69 only because of the preview `noindex`.
